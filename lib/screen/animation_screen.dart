@@ -36,6 +36,7 @@ class _AnimationScreenState extends State<AnimationScreen>
         setState(() {
           imageWidth = info.image.width.toDouble();
           imageHeight = info.image.height.toDouble();
+          
         });
       }),
     );
@@ -49,41 +50,34 @@ class _AnimationScreenState extends State<AnimationScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey,
-      appBar: AppBar(
-        title: const Text('Animation'),
-        backgroundColor: Colors.grey,
-      ),
-      body: Center(
-        child: Stack(
-          alignment: Alignment.center,
-          clipBehavior: Clip.none,
-          children: [
-            Image.asset(
-              'assets/images/adhar.jpg',
-              fit: BoxFit.contain,
-            ),
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
+        clipBehavior: Clip.none,
+        children: [
+          Image.asset(
+            'assets/images/adhar.jpg',
+            fit: BoxFit.contain,
+          ),
 
-            AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) {
-                return Positioned(
-                  top: _upDownAnimation.value,
-                  child: Container(
-                    width: imageWidth + 20,
-                    height: imageHeight,
-                    decoration: BoxDecoration(
-                      color: Colors.orangeAccent.withOpacity(0.3),
-                      border: Border.all(color: Colors.orangeAccent, width: 2),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+          AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) {
+              return Positioned(
+                top: _upDownAnimation.value,
+                child: Container(
+                  width: imageWidth + 20,
+                  height: imageHeight,
+                  decoration: BoxDecoration(
+                    color: Colors.orangeAccent.withOpacity(0.3),
+                    border: Border.all(color: Colors.orangeAccent, width: 2),
+                    borderRadius: BorderRadius.circular(8),
                   ),
-                );
-              },
-            ),
-          ],
-        ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
     );
   }
